@@ -12,7 +12,7 @@ GROUP=`id -g`
 
 FRONT_IMG=front_rundeck
 FRONT_ACI=${DIR}/${FRONT_IMG}.aci
-FRONT_RUN_OPT="--set-env=SERV_HOST=$SERV_HOST --set-env=SERVER_PORT=$SERVER_PORT --set-env=WWW_PORT=$WWW_PORT --set-env=RDECK_HOST=$RDECK_HOST --port www:$WWW_PORT"
+FRONT_RUN_OPT="--set-env=SERV_HOST=$SERV_HOST --set-env=SERVER_PORT=$SERVER_PORT --set-env=RDECK_APP_PORT=$RDECK_APP_PORT --set-env=RDECK_HOST=$RDECK_HOST --port www:$RDECK_APP_PORT"
 FRONT_TRY=40
 FRONT_TRY_DELAY=2
 FRONT_LOG=$DIR/front.log
@@ -42,7 +42,7 @@ build () {
 	$ACBUILD --debug run -- apk add haproxy
 	$ACBUILD --debug copy ${DIR}/startup.sh /root/startup.sh
 	$ACBUILD --debug set-exec -- sh /root/startup.sh
-	$ACBUILD --debug port add www tcp $WWW_PORT
+	$ACBUILD --debug port add www tcp $RDECK_APP_PORT
 	$ACBUILD --debug write --overwrite $FRONT_ACI
 	trap '' EXIT
 	set +e

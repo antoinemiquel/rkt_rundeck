@@ -1,6 +1,6 @@
 export SERV_HOST=${SERV_HOST}
 export SERVER_PORT=${SERVER_PORT}
-export WWW_PORT=${WWW_PORT}
+export RDECK_APP_PORT=${RDECK_APP_PORT}
 export RDECK_HOST=${RDECK_HOST}
 #export CONF_FILE=/etc/nginx/conf.d/rundeck.conf
 export CONF_FILE=/etc/haproxy/haproxy.cfg
@@ -11,7 +11,7 @@ export CONF_FILE=/etc/haproxy/haproxy.cfg
 
 cat <<EOT > $CONF_FILE
 frontend ${RDECK_HOST}
-    bind 0.0.0.0:${WWW_PORT}
+    bind 0.0.0.0:${RDECK_APP_PORT}
     default_backend bk_web
 
 backend bk_web

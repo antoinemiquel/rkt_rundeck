@@ -1,0 +1,5 @@
+RDECK_HOST=192.168.56.101
+RDECK_APP_PORT=80
+
+RUNDECK_JAR_ADDR=http://dl.bintray.com/rundeck/rundeck-maven/rundeck-launcher-2.7.1.jar
+
